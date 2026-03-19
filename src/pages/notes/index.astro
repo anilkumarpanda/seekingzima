@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NoteCard from '../../components/NoteCard.astro';
+import { getCollection, render } from 'astro:content';
+
+const allNotes = (await getCollection('notes')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout title="Notes — Seeking Zima" description="Short thoughts and observations.">
+  <div class="max-w-[860px] mx-auto px-6 py-14">
+    <h1 class="font-serif text-[40px] tracking-[-0.8px] text-ink mb-2">Notes</h1>
+    <p class="text-ink-muted mb-10">Short thoughts and observations.</p>
+    <div class="grid grid-cols-1 gap-4">
+      {allNotes.map((note) => (
+        <NoteCard date={note.data.date} body={note.body || ''} />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

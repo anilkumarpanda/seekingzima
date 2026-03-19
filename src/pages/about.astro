@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArtCanvas from '../components/ArtCanvas.astro';
+---
+
+<BaseLayout title="About — Seeking Zima" description="About Anil Kumar Panda and the meaning behind Seeking Zima.">
+  <div class="max-w-[860px] mx-auto px-6 py-14">
+    <h1 class="font-serif text-[40px] tracking-[-0.8px] text-ink mb-8">About</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="md:col-span-2 space-y-5 text-ink-muted leading-relaxed">
+        <p>
+          I'm Anil — a Principal Data Scientist based in Weesp, Netherlands.
+          I build ML systems during the day and side projects at night.
+        </p>
+        <p>
+          My work sits at the intersection of machine learning, product thinking,
+          and creative tooling. I'm interested in how AI can augment human judgment
+          rather than replace it.
+        </p>
+
+        <h2 class="font-serif text-[22px] tracking-[-0.3px] text-ink pt-4">Why "Seeking Zima"?</h2>
+        <p>
+          In <em>Love, Death & Robots</em>, Zima is a robot who started as a simple
+          pool-cleaning machine. Over centuries of upgrades he became the most famous
+          artist in the universe. But at his final exhibition, he stripped away all
+          his upgrades one by one, dived into a pool, and returned to his original
+          purpose — cleaning tiles. Just a small robot doing the one simple thing it
+          was made for, completely at peace.
+        </p>
+        <p>
+          This site is my version of that. Strip away everything unnecessary. Return to making.
+        </p>
+      </div>
+
+      <div class="aspect-[3/4] rounded-xl overflow-hidden">
+        <ArtCanvas id="about-art" class="w-full h-full" />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

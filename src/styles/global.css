@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Lora", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-cream: #faf8f3;
+  --color-ink: #1c1814;
+  --color-ink-muted: #7a6e64;
+  --color-ink-faint: #c4b8ad;
+  --color-accent: #c4622d;
+  --color-accent-light: #f7ede4;
+  --color-card-bg: #ffffff;
+  --color-border: rgba(28, 24, 20, 0.09);
+  --color-green: #2d5a3d;
+  --color-green-light: #eaf2ed;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-cream: #141210;
+    --color-ink: #e8e4df;
+    --color-ink-muted: #a09689;
+    --color-ink-faint: #5a5047;
+    --color-accent: #e07a3f;
+    --color-accent-light: #2a1f16;
+    --color-card-bg: #1c1a17;
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-green: #5aad76;
+    --color-green-light: #1a2e20;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  line-height: 1.25;
+}
+
+code, pre {
+  font-family: var(--font-mono);
+}
+
+/* Prose styling for MDX content */
+.prose {
+  max-width: 65ch;
+}
+
+.prose h2 {
+  font-size: 1.375rem;
+  letter-spacing: -0.3px;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose h3 {
+  font-size: 1.1875rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+}
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose code {
+  background: var(--color-accent-light);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+.prose pre {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  padding: 1.25rem;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.85em;
+}
+
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose li {
+  margin-bottom: 0.35rem;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1rem;
+  color: var(--color-ink-muted);
+  font-style: italic;
+  margin: 1.5rem 0;
+}

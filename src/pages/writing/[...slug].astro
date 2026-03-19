@@ -1,0 +1,30 @@
+---
+import ContentLayout from '../../layouts/ContentLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { getReadingTime } from '../../lib/readingTime';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const entries = await getCollection('writing');
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const readingTime = getReadingTime(entry.body || '');
+---
+
+<ContentLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  date={entry.data.date}
+  readingTime={readingTime}
+  artSeed={entry.data.artSeed}
+  tags={entry.data.tags}
+>
+  <Content />
+</ContentLayout>

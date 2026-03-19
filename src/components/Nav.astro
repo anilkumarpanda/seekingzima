@@ -1,0 +1,25 @@
+---
+const links = [
+  { href: '/writing', label: 'writing' },
+  { href: '/lab', label: 'lab' },
+  { href: '/notes', label: 'notes' },
+  { href: '/now', label: 'now' },
+  { href: '/about', label: 'about' },
+];
+---
+
+<nav class="flex items-center justify-between py-6 px-6 max-w-[860px] mx-auto">
+  <a href="/" class="font-serif text-lg tracking-tight text-ink no-underline hover:text-accent transition-colors">
+    Anil Kumar Panda
+  </a>
+  <div class="flex gap-5 text-sm text-ink-muted">
+    {links.map((link) => (
+      <a
+        href={link.href}
+        class="no-underline hover:text-ink transition-colors"
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+</nav>

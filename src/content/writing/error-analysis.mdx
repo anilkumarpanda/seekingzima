@@ -1,0 +1,24 @@
+---
+title: "Finding Where Your Model Fails"
+date: 2023-11-10
+description: "Looking at misclassified data points and inferring why your model fails on specific subpopulations."
+tags: ["error analysis", "tabular data"]
+artSeed: 21
+---
+
+Every model fails. The question is whether it fails randomly or systematically. If it's systematic, you can fix it. If it's random, you've probably hit the ceiling.
+
+## Slice and Dice
+
+Group your errors by feature values. If your model fails disproportionately on customers with short credit histories and high income, that's a subpopulation the model hasn't learned well.
+
+## The Error Analysis Loop
+
+1. Train your model
+2. Identify misclassified examples
+3. Cluster them by feature similarity
+4. Name each error cluster
+5. Collect more data or engineer features for the worst clusters
+6. Retrain and repeat
+
+This loop is more valuable than hyperparameter tuning. Understanding *where* your model fails teaches you more about the problem than any grid search ever will.

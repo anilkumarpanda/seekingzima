@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LabCard from '../../components/LabCard.astro';
+import { getCollection } from 'astro:content';
+
+const allLab = (await getCollection('lab')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout title="Lab — Seeking Zima" description="Projects and experiments.">
+  <div class="max-w-[860px] mx-auto px-6 py-14">
+    <h1 class="font-serif text-[40px] tracking-[-0.8px] text-ink mb-2">Lab</h1>
+    <p class="text-ink-muted mb-10">Projects and experiments I'm building.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {allLab.map((project) => (
+        <LabCard
+          slug={project.id}
+          title={project.data.title}
+          description={project.data.description}
+          status={project.data.status}
+          tech={project.data.tech}
+          artSeed={project.data.artSeed}
+          demoUrl={project.data.demoUrl}
+          githubUrl={project.data.githubUrl}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,12 @@
+---
+title: "MAGA Agent"
+date: 2025-01-01
+status: "building"
+description: "Memory-Augmented Generation Agent. Finds non-obvious connections between articles using dual embeddings: topic distance × mechanism similarity = hiddenness score."
+tech: ["RAG", "Embeddings", "Google ADK", "Python"]
+artSeed: 81
+---
+
+MAGA Agent is a Memory-Augmented Generation Agent that discovers hidden connections between articles. The core insight: two things that look unrelated but work the same way are the most interesting connections.
+
+It uses dual embeddings — one for topic similarity, one for mechanism similarity. The hiddenness score is the product of topic distance and mechanism similarity. High hiddenness means "these topics seem unrelated, but they share deep structural patterns."

@@ -1,0 +1,19 @@
+---
+title: "ML Model Metric Credibility"
+date: 2024-01-15
+description: "How confident are you that your model performance isn't below 0.75 AUC? A framework for honest evaluation."
+tags: ["evaluation", "statistics"]
+artSeed: 13
+---
+
+A single AUC number on a test set tells you almost nothing about the reliability of your model. What you need is a confidence interval — and the discipline to act on it.
+
+## Point Estimates Are Dangerous
+
+Your model scored 0.82 AUC on the test set. Great. But what's the 95% confidence interval? If it's [0.71, 0.93], you might have a model that's below your minimum threshold of 0.75.
+
+## Bootstrap Your Way to Honesty
+
+Resample your test set with replacement 1,000 times. Compute AUC on each bootstrap sample. The 2.5th and 97.5th percentiles give you a confidence interval that accounts for the variance in your test data.
+
+This is table stakes for any serious ML deployment. If your stakeholders are making decisions based on a single number, they deserve to know how much that number could vary.

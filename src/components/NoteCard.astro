@@ -1,0 +1,14 @@
+---
+interface Props {
+  date: Date;
+  body: string;
+}
+
+const { date, body } = Astro.props;
+const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<div class="border border-border rounded-xl bg-card-bg p-5">
+  <time class="text-xs text-ink-muted block mb-2">{dateStr}</time>
+  <p class="text-sm text-ink leading-relaxed" set:html={body} />
+</div>

@@ -1,0 +1,19 @@
+---
+title: "Monotonic Constraints for Boosting Models"
+date: 2024-03-01
+description: "When high performance creates non-intuitive models — enforcing domain knowledge without sacrificing accuracy."
+tags: ["machine learning", "xgboost", "credit modeling"]
+artSeed: 7
+---
+
+In credit risk modeling, a model that assigns lower risk to higher debt-to-income ratios is technically possible but practically useless. Monotonic constraints let you encode "more X should mean more Y" directly into gradient-boosted trees.
+
+## The Problem
+
+Boosting models are powerful function approximators. Give them enough trees and they'll find any pattern in the data — including patterns that violate basic domain knowledge.
+
+## The Fix
+
+XGBoost, LightGBM, and CatBoost all support monotonic constraints. You specify which features should have a monotonically increasing or decreasing relationship with the target, and the algorithm enforces this during tree construction.
+
+The performance hit is usually small. In most cases, you're removing spurious patterns that wouldn't generalize anyway.

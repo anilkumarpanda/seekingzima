@@ -1,0 +1,46 @@
+---
+import ArtCanvas from './ArtCanvas.astro';
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  status: 'live' | 'building' | 'archived';
+  tech: string[];
+  artSeed: number;
+  demoUrl?: string;
+  githubUrl?: string;
+}
+
+const { slug, title, description, status, tech, artSeed, demoUrl, githubUrl } = Astro.props;
+
+const statusColors = {
+  live: 'bg-green-light text-green',
+  building: 'bg-accent-light text-accent',
+  archived: 'bg-cream text-ink-muted',
+};
+---
+
+<a href={`/lab/${slug}`} class="block no-underline group">
+  <div class="border border-border rounded-[14px] bg-card-bg overflow-hidden transition-transform duration-150 ease-out hover:-translate-y-0.5 h-full flex flex-col">
+    <div class="aspect-[16/10]">
+      <ArtCanvas id={`art-lab-${slug}`} staticSeed={artSeed} class="w-full h-full" />
+    </div>
+    <div class="p-5 flex flex-col flex-1">
+      <div class="flex items-center gap-2 mb-2">
+        <h3 class="font-serif text-[19px] tracking-[-0.3px] text-ink group-hover:text-accent transition-colors">{title}</h3>
+        <span class={`text-[11px] font-medium px-2 py-0.5 rounded-full ${statusColors[status]}`}>
+          {status}
+        </span>
+      </div>
+      <p class="text-sm text-ink-muted leading-relaxed mb-3 flex-1">{description}</p>
+      <div class="flex flex-wrap gap-1.5">
+        {tech.map((t) => (
+          <span class="text-[11px] px-2 py-0.5 rounded-md bg-cream text-ink-muted border border-border">
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</a>

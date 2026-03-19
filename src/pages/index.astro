@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArtCanvas from '../components/ArtCanvas.astro';
+import VisitorBanner from '../components/VisitorBanner.astro';
+import WritingCard from '../components/WritingCard.astro';
+import LabCard from '../components/LabCard.astro';
+import NoteCard from '../components/NoteCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { getCollection, render } from 'astro:content';
+import { getReadingTime } from '../lib/readingTime';
+
+const allWriting = (await getCollection('writing')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+const allLab = (await getCollection('lab')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+const allNotes = (await getCollection('notes')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+const featured = allWriting[0];
+const rest = allWriting.slice(1, 4);
+const labItems = allLab.slice(0, 4);
+const noteItems = allNotes.slice(0, 4);
+
+// Get reading times
+const featuredRendered = await render(featured);
+const featuredReadingTime = getReadingTime(featured.body || '');
+const restWithTime = await Promise.all(
+  rest.map(async (entry) => ({
+    ...entry,
+    readingTime: getReadingTime(entry.body || ''),
+  }))
+);
+
+// Render notes
+const notesWithHtml = await Promise.all(
+  noteItems.map(async (note) => {
+    const rendered = await render(note);
+    return { ...note, html: rendered.Content };
+  })
+);
+---
+
+<BaseLayout title="Anil Kumar Panda — Seeking Zima">
+  <div class="max-w-[860px] mx-auto px-6">
+    <!-- Hero -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-14">
+      <div>
+        <p class="text-sm text-ink-muted mb-3">Principal Data Scientist · Builder</p>
+        <h1 class="font-serif text-[40px] leading-[1.1] tracking-[-0.8px] text-ink mb-2">
+          Anil Kumar <em>Panda</em>
+        </h1>
+        <p class="font-serif italic text-ink-muted text-lg mb-4">Seeking Zima</p>
+        <p class="text-ink-muted leading-relaxed">
+          Writing about ML, building products with AI, and the overlap
+          between systems thinking and creative work. Based in Weesp, Netherlands.
+        </p>
+      </div>
+      <div class="aspect-square rounded-2xl overflow-hidden">
+        <ArtCanvas id="hero-art" class="w-full h-full" />
+      </div>
+    </section>
+
+    <!-- Visitor Banner -->
+    <VisitorBanner />
+
+    <!-- Writing -->
+    <section class="mt-16">
+      <SectionHeading title="Writing" href="/writing" />
+      <WritingCard
+        slug={featured.id}
+        title={featured.data.title}
+        description={featured.data.description}
+        date={featured.data.date}
+        artSeed={featured.data.artSeed}
+        readingTime={featuredReadingTime}
+        featured
+      />
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
+        {restWithTime.map((entry) => (
+          <WritingCard
+            slug={entry.id}
+            title={entry.data.title}
+            description={entry.data.description}
+            date={entry.data.date}
+            artSeed={entry.data.artSeed}
+            readingTime={entry.readingTime}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Lab -->
+    <section class="mt-20">
+      <SectionHeading title="Lab" href="/lab" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {labItems.map((project) => (
+          <LabCard
+            slug={project.id}
+            title={project.data.title}
+            description={project.data.description}
+            status={project.data.status}
+            tech={project.data.tech}
+            artSeed={project.data.artSeed}
+            demoUrl={project.data.demoUrl}
+            githubUrl={project.data.githubUrl}
+          />
+        ))}
+      </div>
+    </section>
+
+    <!-- Notes -->
+    <section class="mt-20 mb-10">
+      <SectionHeading title="Notes" href="/notes" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {notesWithHtml.map((note) => (
+          <NoteCard date={note.data.date} body={note.body || ''} />
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
