@@ -8,7 +8,7 @@ export async function GET(context: APIContext) {
   );
 
   return rss({
-    title: 'Seeking Zima — Anil Kumar Panda',
+    title: 'Seeking Zima — Anilkumar Panda',
     description: 'Writing about ML, building products with AI, and systems thinking.',
     site: context.site!,
     items: writing.map((post) => ({

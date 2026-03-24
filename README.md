@@ -1,6 +1,6 @@
 # Seeking Zima
 
-Personal portfolio site for [Anil Kumar Panda](https://anilkumarpanda.com).
+Personal portfolio site for [Anilkumar Panda](https://anilkumarpanda.com).
 
 Built with Astro, Tailwind CSS, and MDX. Every page features unique generative art seeded by visitor entropy.
 
