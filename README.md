@@ -1,6 +1,6 @@
 # Seeking Zima
 
-Personal portfolio site for [Anilkumar Panda](https://anilkumarpanda.com).
+Personal portfolio site for [Anilkumar Panda](https://anilpanda.com).
 
 Built with Astro, Tailwind CSS, and MDX. Every page features unique generative art seeded by visitor entropy.
 
@@ -66,6 +66,6 @@ Push to [github.com/anilkumarpanda/seekingzima](https://github.com/anilkumarpand
 
 ### Custom domain
 
-1. Add `anilkumarpanda.com` in Vercel dashboard (Settings > Domains)
+1. Add `anilpanda.com` in Vercel dashboard (Settings > Domains)
 2. Copy the DNS records Vercel provides
 3. Paste them into Porkbun DNS settings
