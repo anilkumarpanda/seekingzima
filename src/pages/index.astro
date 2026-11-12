@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ArtCanvas from '../components/ArtCanvas.astro';
 import VisitorBanner from '../components/VisitorBanner.astro';
 import WritingCard from '../components/WritingCard.astro';
 import LabCard from '../components/LabCard.astro';
@@ -44,22 +43,44 @@ const notesWithHtml = await Promise.all(
 ---
 
 <BaseLayout title="Anilkumar Panda — Seeking Zima">
-  <div class="max-w-[860px] mx-auto px-6">
+  <div class="max-w-[1040px] mx-auto px-5 sm:px-8">
     <!-- Hero -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-14">
-      <div>
-        <p class="text-sm text-ink-muted mb-3">Principal Data Scientist · Builder</p>
-        <h1 class="font-serif text-[40px] leading-[1.1] tracking-[-0.8px] text-ink mb-2">
-          Anil Kumar <em>Panda</em>
-        </h1>
-        <p class="font-serif italic text-ink-muted text-lg mb-4">Seeking Zima</p>
-        <p class="text-ink-muted leading-relaxed">
-          Writing about ML, building products with AI, and the overlap
-          between systems thinking and creative work. Based in Weesp, Netherlands.
-        </p>
+    <section class="pt-6">
+      <p class="text-[11px] uppercase text-ink-muted mb-3">Principal Data Scientist · Builder</p>
+      <h1 class="font-serif text-[40px] sm:text-[56px] leading-[1.15] text-ink mb-2">
+        Anil Kumar <em>Panda</em><span class="text-coral">.</span>
+      </h1>
+      <p class="font-serif italic text-ink-muted text-lg mb-4">Seeking Zima</p>
+      <p class="text-ink-muted text-[17px] leading-relaxed max-w-[640px] mb-[30px]">
+        Writing about ML, building products with AI, and the overlap
+        between systems thinking and creative work. Based in Weesp, Netherlands.
+      </p>
+      <img
+        src="/images/garden-ecosystem.jpg"
+        width="1536"
+        height="1024"
+        alt="Ink and gouache illustration of emerald plants with coral network nodes around a turquoise pond, golden insects above, and interconnected roots below the soil."
+        class="block w-full h-auto aspect-[3/2] object-cover rounded-[4px]"
+        fetchpriority="high"
+      />
+      <div class="py-5">
+        <p class="text-[11px] uppercase text-ink-muted">Specimen 01 / 03</p>
+        <p class="font-serif text-2xl text-ink mt-1">Everything is connected</p>
+        <p class="text-[13px] text-ink-muted">A quiet network of roots, visitors, and unexpected friendships.</p>
       </div>
-      <div class="aspect-square rounded-2xl overflow-hidden">
-        <ArtCanvas id="hero-art" class="w-full h-full" />
+      <div class="grid grid-cols-2 gap-2 sm:gap-4 mt-2">
+        <figure>
+          <img src="/images/garden-feedback.jpg" width="1536" height="1024" loading="lazy"
+            alt="Illustration of a coral flower with pollinators, small plants, and dotted looping connections."
+            class="block w-full h-auto aspect-[3/2] object-cover rounded-[4px] border border-border" />
+          <figcaption class="text-xs text-ink-muted pt-2">02 · Feedback loops</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/garden-canal.jpg" width="1536" height="1024" loading="lazy"
+            alt="Illustration of a turquoise canal and small buildings among reeds and flowers, with a golden dragonfly."
+            class="block w-full h-auto aspect-[3/2] object-cover rounded-[4px] border border-border" />
+          <figcaption class="text-xs text-ink-muted pt-2">03 · Canal life</figcaption>
+        </figure>
       </div>
     </section>
 

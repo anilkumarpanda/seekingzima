@@ -8,11 +8,11 @@ const links = [
 ];
 ---
 
-<nav class="flex items-center justify-between py-6 px-6 max-w-[860px] mx-auto">
-  <a href="/" class="font-serif text-lg tracking-tight text-ink no-underline hover:text-accent transition-colors">
+<nav class="flex items-center justify-between py-6 px-5 sm:px-8 max-w-[1040px] mx-auto flex-wrap gap-y-2">
+  <a href="/" class="font-serif text-[19px] text-ink no-underline hover:text-accent transition-colors">
     Anilkumar Panda
   </a>
-  <div class="flex gap-5 text-sm text-ink-muted">
+  <div class="flex flex-wrap gap-x-5 gap-y-1 text-sm text-ink-muted">
     {links.map((link) => (
       <a
         href={link.href}

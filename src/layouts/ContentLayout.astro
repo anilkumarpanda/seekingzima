@@ -18,8 +18,8 @@ const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long
 ---
 
 <BaseLayout title={`${title} — Seeking Zima`} description={description}>
-  <article class="max-w-[860px] mx-auto px-6 py-10">
-    <div class="rounded-xl overflow-hidden mb-8 aspect-[21/9]">
+  <article class="max-w-[1040px] mx-auto px-5 sm:px-8 py-10">
+    <div class="rounded-[4px] overflow-hidden mb-8 aspect-[21/9]">
       <ArtCanvas id="art-hero" staticSeed={artSeed} class="w-full h-full" />
     </div>
 
@@ -35,7 +35,7 @@ const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long
         {status && (
           <>
             <span class="text-ink-faint">·</span>
-            <span class={`text-[11px] font-medium px-2 py-0.5 rounded-full ${
+            <span class={`text-[11px] font-medium px-2 py-0.5 rounded-[4px] ${
               status === 'live' ? 'bg-green-light text-green' :
               status === 'building' ? 'bg-accent-light text-accent' :
               'bg-cream text-ink-muted'
@@ -43,12 +43,12 @@ const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long
           </>
         )}
       </div>
-      <h1 class="font-serif text-[40px] leading-tight tracking-[-0.8px] text-ink mb-3">{title}</h1>
+      <h1 class="font-serif text-[40px] leading-tight text-ink mb-3">{title}</h1>
       <p class="text-ink-muted text-lg">{description}</p>
       {tags && tags.length > 0 && (
         <div class="flex flex-wrap gap-1.5 mt-4">
           {tags.map((tag) => (
-            <span class="text-[11px] px-2 py-0.5 rounded-md bg-accent-light text-accent">
+            <span class="text-[11px] px-2 py-0.5 rounded-[4px] bg-accent-light text-accent">
               {tag}
             </span>
           ))}
@@ -57,7 +57,7 @@ const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long
       {tech && tech.length > 0 && (
         <div class="flex flex-wrap gap-1.5 mt-4">
           {tech.map((t) => (
-            <span class="text-[11px] px-2 py-0.5 rounded-md bg-cream text-ink-muted border border-border">
+            <span class="text-[11px] px-2 py-0.5 rounded-[4px] bg-cream text-ink-muted border border-border">
               {t}
             </span>
           ))}
