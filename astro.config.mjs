@@ -6,7 +6,7 @@ import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://anilkumarpanda.com',
+  site: 'https://anilpanda.com',
   output: 'server',
   adapter: vercel(),
   integrations: [mdx(), sitemap()],

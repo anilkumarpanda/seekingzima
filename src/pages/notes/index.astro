@@ -9,8 +9,8 @@ const allNotes = (await getCollection('notes')).sort(
 ---
 
 <BaseLayout title="Notes — Seeking Zima" description="Short thoughts and observations.">
-  <div class="max-w-[860px] mx-auto px-6 py-14">
-    <h1 class="font-serif text-[40px] tracking-[-0.8px] text-ink mb-2">Notes</h1>
+  <div class="max-w-[1040px] mx-auto px-5 sm:px-8 py-14">
+    <h1 class="font-serif text-[40px] text-ink mb-2">Notes</h1>
     <p class="text-ink-muted mb-10">Short thoughts and observations.</p>
     <div class="grid grid-cols-1 gap-4">
       {allNotes.map((note) => (

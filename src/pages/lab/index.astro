@@ -9,8 +9,8 @@ const allLab = (await getCollection('lab')).sort(
 ---
 
 <BaseLayout title="Lab — Seeking Zima" description="Projects and experiments.">
-  <div class="max-w-[860px] mx-auto px-6 py-14">
-    <h1 class="font-serif text-[40px] tracking-[-0.8px] text-ink mb-2">Lab</h1>
+  <div class="max-w-[1040px] mx-auto px-5 sm:px-8 py-14">
+    <h1 class="font-serif text-[40px] text-ink mb-2">Lab</h1>
     <p class="text-ink-muted mb-10">Projects and experiments I'm building.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {allLab.map((project) => (
